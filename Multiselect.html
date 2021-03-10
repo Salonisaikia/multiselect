@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="./app.js"></script>
+    <link href="app.css" type="text/css" rel="stylesheet" />
+  </head>
+  
+  <body ng-app="myapp">
+    <div ng-controller="MultiSelectController" style="margin: 20px">
+     <p>Please enter Country id and country name separately</p>
+    <input name="namesInput" ng-model="input.id" ng-list required style="padding: 10px; width: 100%; height: auto; margin-bottom: 10px;" placeholder="Enter Country ID">
+    <input name="namesInput" ng-model="input.name" ng-list required style="padding: 10px; width: 100%; height: auto; margin-bottom: 10px;" placeholder="Enter Country Name">
+    <button ng-click="addCountry()"> Add Input</button>
+   
+      <div style="float:right">
+        <ul class="items-list">
+          <li ng-repeat="country in data | filter: getSelectedCountries">
+ 
+          {{country.name}}
+      </li>
+        </ul>
+      </div>
+      <div class="wrapper">
+        <div class="selected-items-box">
+          <input type="text" name="search" ng-model="search" placeholder="Please search your list here" class="dropdown-icon">
+        </div>
+
+        <div class="list">
+          <ul class="items-list">
+            <li ng-repeat="country in data| filter:search">
+              <input type="checkbox" ng-model="country.selected" />
+              <span>{{country.name}}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
